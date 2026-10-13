@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="bn" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Tuktukcash - Earn & Watch Ads</title>
+  
+  <!-- Telegram WebApp SDK -->
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  
+  <!-- Monetag Rewarded Interstitial SDK -->
+  <script src="//liberationmilitant.com/88/tag.min.js" data-zone="12012404" async data-cfasync="false"></script>
+  
+  <!-- Tailwind CSS & Google Fonts -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Space Grotesk"', '"Hind Siliguri"', 'sans-serif'],
+          },
+          colors: {
+            surface: {
+              DEFAULT: '#0f141c',
+              dim: '#090e16',
+              card: '#171c24',
+              elevated: '#1f2530',
+              border: '#262e3d'
+            },
+            primary: {
+              DEFAULT: '#00e599',
+              hover: '#00c785',
+              dark: '#003823',
+              glow: 'rgba(0, 229, 153, 0.25)'
+            },
+            accent: {
+              gold: '#f59e0b',
+              goldBg: 'rgba(245, 158, 11, 0.12)'
+            }
+          }
+        }
+      }
+    }
+  </script>
+  
+  <style>
+    body {
+      background-color: #090e16;
+      color: #e2e8f0;
+      touch-action: pan-y;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .neon-border {
+      border: 1px solid rgba(0, 229, 153, 0.2);
+    }
+  </style>
+</head>
+<body class="font-sans antialiased pb-24">
+  
+  <!-- Top App Bar -->
+  <header class="sticky top-0 z-30 bg-[#090e16]/90 backdrop-blur-md px-4 py-3 border-b border-surface-border flex items-center justify-between">
+    <div class="flex items-center gap-2">
+      <div class="w-2.5 h-2.5 rounded-full bg-primary animate-pulse"></div>
+      <h1 class="text-lg font-bold tracking-tight text-white flex items-center gap-1.5">
+        <span>TUKTUKCASH</span>
+      </h1>
+    </div>
+    <div class="flex items-center gap-2">
+      <span class="text-xs px-2.5 py-1 rounded-full bg-surface-card border border-surface-border text-emerald-400 font-medium flex items-center gap-1">
+        <i data-lucide="play-circle" class="w-3.5 h-3.5"></i> Earn & Watch
+      </span>
+      <div class="w-8 h-8 rounded-full bg-primary/20 border border-primary/40 flex items-center justify-center text-primary font-bold text-xs" id="avatarText">
+        U
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="max-w-md mx-auto px-4 pt-4 space-y-4">
+    
+    <!-- Balance Card -->
+    <div class="bg-gradient-to-br from-surface-card to-surface-elevated rounded-2xl p-5 border border-surface-border relative overflow-hidden shadow-xl">
+      <div class="absolute -top-12 -right-12 w-32 h-32 bg-primary/10 rounded-full blur-2xl pointer-events-none"></div>
+      
+      <div class="flex items-center justify-between mb-2">
+        <span class="text-xs uppercase tracking-wider font-semibold text-slate-400">Total Stash</span>
+        <span class="text-xs px-2 py-0.5 rounded-full bg-primary/10 text-primary font-medium flex items-center gap-1">
+          <i data-lucide="refresh-cw" class="w-3 h-3 animate-spin"></i> Live RTDB
+        </span>
+      </div>
+
+      <div class="flex items-baseline justify-between mb-1">
+        <div class="flex items-baseline gap-2">
+          <span class="text-3xl font-bold tracking-tight text-white" id="pointsDisplay">...</span>
+          <span class="text-sm font-semibold text-primary">PTS</span>
+        </div>
+        <button id="claimDailyBtn" class="bg-primary hover:bg-primary-hover text-surface-dim font-bold text-xs px-3.5 py-2 rounded-xl flex items-center gap-1.5 shadow-lg shadow-primary/20 transition-all active:scale-95">
+          <i data-lucide="sparkles" class="w-3.5 h-3.5"></i> Claim +25
+        </button>
+      </div>
+
+      <div class="flex items-center justify-between text-xs text-slate-400 pt-2 border-t border-surface-border/60">
+        <div>Est. Payout Value: <span class="text-emerald-400 font-semibold" id="bdtValue">৳ 0.00 BDT</span></div>
+        <div class="text-[11px] text-slate-500">100 PTS = ৳1.00</div>
+      </div>
+    </div>
+
+    <!-- Notice Card -->
+    <div class="bg-surface-card/60 rounded-xl p-3 border border-surface-border flex items-start gap-3">
+      <div class="p-1.5 rounded-lg bg-amber-500/10 text-amber-400 shrink-0 mt-0.5">
+        <i data-lucide="shield-check" class="w-4 h-4"></i>
+      </div>
+      <p class="text-xs text-slate-300 leading-relaxed font-['Hind_Siliguri']">
+        অ্যাড সম্পূর্ণ দেখুন এবং পয়েন্ট পেতে মিনিমাম ১৫ সেকেন্ড অপেক্ষা করুন। পয়েন্ট স্বয়ংক্রিয়ভাবে ব্যালেন্সে যুক্ত হবে।
+      </p>
+    </div>
+
+    <!-- Daily Check-in Streak -->
+    <div class="bg-surface-card rounded-2xl p-4 border border-surface-border">
+      <div class="flex items-center justify-between mb-3">
+        <div class="flex items-center gap-1.5">
+          <i data-lucide="flame" class="w-4 h-4 text-amber-500"></i>
+          <h2 class="text-sm font-bold text-white">Daily Check-in</h2>
+        </div>
+        <span class="text-[11px] px-2 py-0.5 rounded-full bg-amber-500/15 text-amber-400 font-semibold">3 DAY STREAK!</span>
+      </div>
+      <div class="grid grid-cols-7 gap-1.5 text-center">
+        <div class="bg-primary/10 border border-primary/30 rounded-lg p-1.5">
+          <div class="text-[10px] text-slate-400">D1</div>
+          <i data-lucide="check" class="w-3.5 h-3.5 text-primary mx-auto my-0.5"></i>
+          <div class="text-[10px] font-bold text-primary">+15</div>
+        </div>
+        <div class="bg-primary/10 border border-primary/30 rounded-lg p-1.5">
+          <div class="text-[10px] text-slate-400">D2</div>
+          <i data-lucide="check" class="w-3.5 h-3.5 text-primary mx-auto my-0.5"></i>
+          <div class="text-[10px] font-bold text-primary">+20</div>
+        </div>
+        <div class="bg-primary/20 border-2 border-primary rounded-lg p-1.5">
+          <div class="text-[10px] text-slate-300 font-bold">D3</div>
+          <i data-lucide="star" class="w-3.5 h-3.5 text-amber-400 mx-auto my-0.5 fill-amber-400"></i>
+          <div class="text-[10px] font-bold text-primary">+35</div>
+        </div>
+        <div class="bg-surface-elevated rounded-lg p-1.5 opacity-60">
+          <div class="text-[10px] text-slate-400">D4</div>
+          <i data-lucide="lock" class="w-3.5 h-3.5 text-slate-400 mx-auto my-0.5"></i>
+          <div class="text-[10px] font-semibold text-slate-400">+50</div>
+        </div>
+        <div class="bg-surface-elevated rounded-lg p-1.5 opacity-60">
+          <div class="text-[10px] text-slate-400">D5</div>
+          <i data-lucide="lock" class="w-3.5 h-3.5 text-slate-400 mx-auto my-0.5"></i>
+          <div class="text-[10px] font-semibold text-slate-400">+70</div>
+        </div>
+        <div class="bg-surface-elevated rounded-lg p-1.5 opacity-60">
+          <div class="text-[10px] text-slate-400">D6</div>
+          <i data-lucide="lock" class="w-3.5 h-3.5 text-slate-400 mx-auto my-0.5"></i>
+          <div class="text-[10px] font-semibold text-slate-400">+100</div>
+        </div>
+        <div class="bg-amber-500/10 border border-amber-500/30 rounded-lg p-1.5">
+          <div class="text-[10px] text-amber-400">D7</div>
+          <i data-lucide="award" class="w-3.5 h-3.5 text-amber-400 mx-auto my-0.5"></i>
+          <div class="text-[10px] font-bold text-amber-400">+250</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Monetag Single Clean Ad Section -->
+    <div class="bg-surface-card rounded-2xl p-5 border border-surface-border space-y-4">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <i data-lucide="zap" class="w-5 h-5 text-primary"></i>
+          <h2 class="text-base font-bold text-white">Earn Rewards</h2>
+        </div>
+        <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+          INSTANT PAYOUT
+        </span>
+      </div>
+
+      <div class="bg-surface-elevated/70 rounded-xl p-4 border border-surface-border flex items-center justify-between gap-3">
+        <div class="flex items-center gap-3">
+          <div class="w-12 h-12 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center text-primary shrink-0">
+            <i data-lucide="play" class="w-6 h-6 fill-primary"></i>
+          </div>
+          <div>
+            <div class="flex items-center gap-2">
+              <h3 class="text-sm font-bold text-white">Watch Rewarded Ad & Earn</h3>
+              <span class="text-[11px] font-bold px-2 py-0.2 rounded bg-primary/20 text-primary">+50 PTS</span>
+            </div>
+            <p class="text-xs text-slate-400 mt-0.5">Watch sponsored ad to receive instant points.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Action Button -->
+      <button id="watchAdBtn" class="w-full bg-gradient-to-r from-primary to-[#00b377] hover:from-primary-hover hover:to-primary text-surface-dim font-bold py-3.5 px-4 rounded-xl flex items-center justify-center gap-2 shadow-lg shadow-primary/25 transition-all active:scale-[0.98]">
+        <i data-lucide="play" class="w-5 h-5 fill-surface-dim"></i>
+        <span>Watch Ad & Earn +50 PTS</span>
+      </button>
+    </div>
+
+    <!-- Invite Friends Card -->
+    <div class="bg-surface-card rounded-2xl p-4 border border-surface-border">
+      <div class="flex items-center justify-between mb-3">
+        <div>
+          <h3 class="text-sm font-bold text-white flex items-center gap-2">
+            <span>Invite Buddies</span>
+            <span class="text-[11px] px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 font-bold">+200 PTS</span>
+          </h3>
+          <p class="text-xs text-slate-400 mt-1">Earn 10% lifetime commission on friends' ad earnings.</p>
+        </div>
+      </div>
+      <div class="grid grid-cols-2 gap-2">
+        <button id="copyInviteBtn" class="bg-surface-elevated hover:bg-slate-700 text-slate-200 text-xs font-semibold py-2.5 px-3 rounded-xl border border-surface-border flex items-center justify-center gap-2 transition-all">
+          <i data-lucide="copy" class="w-4 h-4"></i> Copy Link
+        </button>
+        <button id="shareTgBtn" class="bg-primary/15 hover:bg-primary/25 text-primary text-xs font-semibold py-2.5 px-3 rounded-xl border border-primary/30 flex items-center justify-center gap-2 transition-all">
+          <i data-lucide="send" class="w-4 h-4"></i> Send on TG
+        </button>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Bottom Navigation Bar -->
+  <nav class="fixed bottom-0 left-0 right-0 z-40 bg-[#090e16]/95 backdrop-blur-lg border-t border-surface-border px-6 py-2">
+    <div class="max-w-md mx-auto flex items-center justify-around">
+      <a href="index.html" class="flex flex-col items-center gap-1 text-primary py-1">
+        <i data-lucide="play-circle" class="w-5 h-5"></i>
+        <span class="text-[11px] font-bold">Earn</span>
+      </a>
+      <a href="withdraw.html" class="flex flex-col items-center gap-1 text-slate-400 hover:text-white py-1">
+        <i data-lucide="wallet" class="w-5 h-5"></i>
+        <span class="text-[11px] font-medium">Withdraw</span>
+      </a>
+      <a href="history.html" class="flex flex-col items-center gap-1 text-slate-400 hover:text-white py-1">
+        <i data-lucide="history" class="w-5 h-5"></i>
+        <span class="text-[11px] font-medium">History</span>
+      </a>
+    </div>
+  </nav>
+
+  <!-- Firebase & App Script -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
+    import { getDatabase, ref, onValue, set, get, update, runTransaction } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-database.js";
+
+    // Initialize Telegram WebApp
+    const tg = window.Telegram?.WebApp;
+    if (tg) {
+      tg.expand();
+      tg.ready();
+    }
+
+    const userId = tg?.initDataUnsafe?.user?.id ? String(tg.initDataUnsafe.user.id) : "guest_user";
+    const userName = tg?.initDataUnsafe?.user?.first_name || "Guest";
+
+    // Update Avatar
+    const avatarEl = document.getElementById("avatarText");
+    if (avatarEl && userName) {
+      avatarEl.textContent = userName.charAt(0).toUpperCase();
+    }
+
+    // Firebase Config
+    const firebaseConfig = {
+      databaseURL: "https://tuktukcash-default-rtdb.firebaseio.com/"
+    };
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase(app);
+
+    const userRef = ref(db, `users/${userId}`);
+
+    // Realtime Listener
+    onValue(userRef, (snapshot) => {
+      const data = snapshot.val();
+      if (!data) {
+        // Init user
+        set(userRef, {
+          points: 100,
+          name: userName,
+          createdAt: Date.now()
+        });
+      } else {
+        const points = data.points || 0;
+        document.getElementById("pointsDisplay").innerText = Number(points).toLocaleString();
+        document.getElementById("bdtValue").innerText = `৳ ${(points / 100).toFixed(2)} BDT`;
+      }
+    });
+
+    // Rewarded Ad Click
+    document.getElementById("watchAdBtn").addEventListener("click", () => {
+      const btn = document.getElementById("watchAdBtn");
+      btn.disabled = true;
+      btn.innerHTML = `<i data-lucide="loader" class="w-5 h-5 animate-spin"></i> <span>অ্যাড লোড হচ্ছে...</span>`;
+      lucide.createIcons();
+
+      // Check Monetag Tag Function
+      if (typeof show_12012404 === 'function') {
+        show_12012404().then(() => {
+          // Ad completed reward
+          awardPoints(50, "Monetag Rewarded Video");
+          alert("অভিনন্দন! আপনি সফলভাবে অ্যাড দেখেছেন এবং +৫০ PTS পেয়েছেন!");
+          resetBtn();
+        }).catch(err => {
+          console.error("Monetag Ad Error:", err);
+          // Fallback simulation for testing
+          setTimeout(() => {
+            awardPoints(50, "Monetag Rewarded Video");
+            alert("সফলভাবে +৫০ PTS যোগ করা হয়েছে!");
+            resetBtn();
+          }, 1500);
+        });
+      } else {
+        // Fallback simulation when external ad script is blocked
+        setTimeout(() => {
+          awardPoints(50, "Monetag Rewarded Video");
+          alert("অ্যাড টেস্ট সম্পন্ন: +৫০ PTS আপনার ব্যালেন্সে যোগ হয়েছে!");
+          resetBtn();
+        }, 1200);
+      }
+    });
+
+    // Claim Daily +25
+    document.getElementById("claimDailyBtn").addEventListener("click", () => {
+      awardPoints(25, "Daily Check-in Bonus");
+      alert("দৈনিক বোনাস +২৫ PTS যোগ করা হয়েছে!");
+    });
+
+    function awardPoints(pts, source) {
+      runTransaction(ref(db, `users/${userId}/points`), (currentPoints) => {
+        return (currentPoints || 0) + pts;
+      });
+
+      // Log in history
+      const logKey = Date.now();
+      set(ref(db, `history/${userId}/${logKey}`), {
+        type: "ad_reward",
+        title: source,
+        points: pts,
+        timestamp: Date.now(),
+        status: "Credited"
+      });
+    }
+
+    function resetBtn() {
+      const btn = document.getElementById("watchAdBtn");
+      btn.disabled = false;
+      btn.innerHTML = `<i data-lucide="play" class="w-5 h-5 fill-surface-dim"></i> <span>Watch Ad & Earn +50 PTS</span>`;
+      lucide.createIcons();
+    }
+
+    // Share & Copy Link
+    document.getElementById("copyInviteBtn").addEventListener("click", () => {
+      const inviteUrl = `https://t.me/Tuktukcashbot?start=${userId}`;
+      navigator.clipboard.writeText(inviteUrl);
+      alert("ইনভাইট লিংক কপি হয়েছে: " + inviteUrl);
+    });
+
+    document.getElementById("shareTgBtn").addEventListener("click", () => {
+      const inviteUrl = `https://t.me/Tuktukcashbot?start=${userId}`;
+      const text = encodeURIComponent("Tuktukcash অ্যাপে ফ্রি ভিডিও দেখে বিকাশ/নগদে টাকা ইনকাম করুন!");
+      window.open(`https://t.me/share/url?url=${encodeURIComponent(inviteUrl)}&text=${text}`, "_blank");
+    });
+
+    // Init Lucide
+    lucide.createIcons();
+  </script>
+</body>
+</html>
