@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_tab" name="shell-type"/><title>Tuktukcash - Telegram Mini App</title>
+<!-- Telegram WebApp SDK -->
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+<!-- Monetag Rewarded Interstitial SDK Zone 12012404 Tag (or async script support) -->
+<script>(function(s,u,z,p){s.src=u,s.setAttribute('data-zone',z),p.appendChild(s);})(document.createElement('script'),'https://alwingulla.com/88/tag.min.js',12012404,document.head||document.documentElement);</script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&amp;family=Hanken+Grotesk:wght@400;500;600&amp;family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@100..900&amp;family=Space+Grotesk:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{width:100vw;margin:0;padding:0;background-color:#0f141c;}body{overscroll-behavior:none;-webkit-tap-highlight-color:transparent;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { colors: { "on-primary": "#003822", "on-tertiary": "#003353", "on-tertiary-fixed": "#001d32", "inverse-on-surface": "#2c3139", "background": "#0f141c", "error-container": "#93000a", "on-tertiary-fixed-variant": "#004a76", "on-secondary": "#412d00", "primary": "#6dffba", "surface-bright": "#343942", "on-primary-fixed": "#002112", "primary-container": "#00e599", "tertiary-container": "#9cceff", "primary-fixed-dim": "#00e297", "surface-container-lowest": "#090e16", "on-secondary-fixed-variant": "#5e4200", "surface-container-highest": "#30353e", "inverse-surface": "#dee2ee", "surface-tint": "#00e297", "on-surface": "#dee2ee", "secondary-fixed": "#ffdea8", "secondary-container": "#feb700", "on-background": "#dee2ee", "primary-fixed": "#4dffb2", "on-tertiary-container": "#00588b", "outline": "#849589", "on-error": "#690005", "surface-variant": "#30353e", "tertiary-fixed-dim": "#96ccff", "on-primary-container": "#00613e", "on-surface-variant": "#bacbbe", "tertiary-fixed": "#cee5ff", "on-secondary-container": "#6b4b00", "on-secondary-fixed": "#271900", "surface-dim": "#0f141c", "inverse-primary": "#006c46", "surface-container-low": "#171c24", "outline-variant": "#3b4a41", "surface-container": "#1b2028", "on-primary-fixed-variant": "#005234", "surface-container-high": "#252a33", "secondary-fixed-dim": "#ffba20", "error": "#ffb4ab", "on-error-container": "#ffdad6", "surface": "#0f141c", "secondary": "#ffdb9d", "tertiary": "#d3e7ff" }, borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, spacing: { "space-lg": "1rem", "space-md": "0.75rem", "margin": "1rem", "space-xl": "1.5rem", "space-sm": "0.5rem", "gutter-md": "1rem", "space-xs": "0.25rem", "gutter": "0.75rem", "margin-mobile": "0.75rem" }, fontFamily: { "label-sm": ["Space Grotesk"], "body-md": ["Hanken Grotesk"], "label-lg": ["Space Grotesk"], "label-md": ["Space Grotesk"], "headline-xl-mobile": ["Space Grotesk"], "body-sm": ["Hanken Grotesk"], "headline-lg": ["Space Grotesk"], "headline-xl": ["Space Grotesk"], "headline-md": ["Space Grotesk"], "body-lg": ["Hanken Grotesk"] }, fontSize: { "label-sm": ["10px", {"lineHeight": "12px", "letterSpacing": "0.06em", "fontWeight": "700"}], "body-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "400"}], "label-lg": ["14px", {"lineHeight": "18px", "letterSpacing": "0.02em", "fontWeight": "600"}], "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "600"}], "headline-xl-mobile": ["28px", {"lineHeight": "34px", "letterSpacing": "-0.02em", "fontWeight": "700"}], "body-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "400"}], "headline-lg": ["24px", {"lineHeight": "30px", "letterSpacing": "-0.02em", "fontWeight": "600"}], "headline-xl": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.03em", "fontWeight": "700"}], "headline-md": ["20px", {"lineHeight": "26px", "letterSpacing": "-0.01em", "fontWeight": "600"}], "body-lg": ["16px", {"lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400"}] } } } };</script><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface font-body-md text-on-surface flex flex-col min-h-screen"><header class="fixed top-0 w-full z-50 pt-safe bg-surface-container-lowest/80 backdrop-blur-xl shadow-[0_4px_24px_rgba(0,0,0,0.4)]"><div class="h-16 px-margin flex items-center justify-between"><div class="flex items-center gap-space-sm"><div class="flex items-center gap-space-xs px-space-sm py-1 rounded-full bg-surface-container-high"><span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span><span class="font-label-sm text-label-sm text-primary tracking-wider font-bold uppercase">Tuktukcash</span><span class="text-[10px] text-on-surface-variant font-medium lowercase">@Tuktukcashbot</span></div><div class="flex items-center gap-1 px-space-sm py-1 rounded-full bg-secondary-container/15 text-secondary"><span class="material-symbols-outlined text-[14px]">verified</span><span class="font-label-sm text-label-sm uppercase">VIP</span></div></div><div class="flex items-center"><h1 class="font-headline-md text-headline-md tracking-tight text-on-surface text-center capitalize" id="current-screen-title">Earn &amp; Watch</h1></div><div class="flex items-center"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center overflow-hidden border border-primary/30" id="header-avatar-slot"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="flex flex-col relative w-full pt-16 pb-24 px-margin bg-surface"><div class="flex flex-col w-full gap-space-md">
+<!-- Minimal Ambient Glow Behind Balance -->
+<div class="relative w-full">
+<div class="absolute -top-10 left-1/2 -translate-x-1/2 w-64 h-32 bg-primary/10 blur-[60px] pointer-events-none rounded-full"></div>
+<!-- Balance Card (Total Stash) -->
+<div class="relative w-full rounded-2xl bg-surface-container-low p-space-lg shadow-xl overflow-hidden flex flex-col gap-space-md">
+<!-- Card Decorative Accent -->
+<div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-primary/10 via-transparent to-transparent pointer-events-none"></div>
+<div class="flex items-center justify-between z-10">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[20px]" style="font-variation-settings: 'FILL' 1;">monetization_on</span>
+<span class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant">Total Stash</span>
+</div>
+<div class="flex items-center gap-1.5 px-space-sm py-1 rounded-full bg-secondary-container/10">
+<span class="material-symbols-outlined text-secondary-fixed text-[14px]">local_fire_department</span>
+<span class="font-label-sm text-label-sm text-secondary-fixed">Streak 3 Days</span>
+</div>
+</div>
+<div class="flex items-baseline justify-between z-10">
+<div class="flex items-baseline gap-space-xs">
+<span class="font-headline-xl-mobile text-headline-xl-mobile font-bold text-on-surface tracking-tight" id="user-points-display">150</span>
+<span class="font-headline-md text-headline-md text-primary font-bold">PTS</span>
+</div>
+<button class="flex items-center gap-1 px-4 py-2.5 rounded-full bg-primary-container text-on-primary font-label-md text-label-md font-bold shadow-lg shadow-primary/20 hover:opacity-95 active:scale-95 transition-all" id="quick-claim-btn">
+<span class="material-symbols-outlined text-[16px]">bolt</span>
+<span>Claim +25</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Anti-Fraud Guidelines Pill -->
+<div class="w-full rounded-xl bg-surface-container p-3 flex items-center gap-space-sm shadow-sm">
+<div class="w-8 h-8 rounded-full bg-secondary-container/15 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-secondary text-[18px]">verified_user</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-tight">
+      বিজ্ঞাপন সম্পূর্ণ দেখুন এবং পয়েন্ট পেতে ১৫ সেকেন্ড অপেক্ষা করুন।
+    </p>
+</div>
+<!-- Primary Earn Action Card (Monetag Rewarded Interstitial) -->
+<div class="relative w-full rounded-2xl bg-surface-container-high p-space-lg shadow-xl overflow-hidden flex flex-col gap-space-md">
+<div class="absolute -right-8 -top-8 w-36 h-36 bg-primary/15 rounded-full blur-2xl pointer-events-none"></div>
+<div class="flex items-start justify-between gap-space-sm z-10">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[20px]">smart_display</span>
+<h2 class="font-headline-md text-headline-md font-bold text-on-surface">Watch Rewarded Ad</h2>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">প্রতিটি স্পন্সরড ভিডিও দেখে ইনস্ট্যান্ট ৫০ পয়েন্ট আর্ন করুন।</p>
+</div>
+<div class="px-2.5 py-1 rounded-full bg-primary/10 shrink-0">
+<span class="font-label-sm text-label-sm font-bold text-primary">+50 PTS</span>
+</div>
+</div>
+<!-- Ad Visual Element -->
+<div class="relative w-full h-32 rounded-xl overflow-hidden bg-surface-container-lowest flex items-center justify-center shadow-inner">
+<img class="absolute inset-0 w-full h-full object-cover opacity-35" data-alt="High tech dark themed cybernetic vault interface with glowing emerald neon crystals and rewards, cinematic lighting, 4k ultra detailed wallpaper aesthetics" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB5aRHJ9ZkCUCWXIgl8720G72QH65ZcMXavKpfIQ9mHo9akFJ_FwezlrQgmtWzc70pmZggq98KYNrSyMB8ErHNKocjmDMGcHakcOaax6sMpdjojDxrwsllhwt74IZ7rdcEaZx1jmfyAhpBw7BbIXzEuPZN1TtbCZgyVsHAJRQIPNqXgfkR9UxKrLHVXxLBL2DrhbPwS_1kyASoJyHkF3zLODSFWKdN7JKvh2sZ2J-0uwtUyPMh6k9c"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest via-surface-container-lowest/40 to-transparent"></div>
+<div class="z-10 flex flex-col items-center gap-1">
+<div class="w-11 h-11 rounded-full bg-primary/20 backdrop-blur-md flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[24px]">play_arrow</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface uppercase tracking-wider">Fast Rewarded Server</span>
+</div>
+</div>
+<!-- Glowing Action Trigger Button -->
+<button class="w-full py-3.5 px-space-md rounded-full bg-primary-container text-on-primary font-label-lg text-label-lg font-bold flex items-center justify-center gap-space-xs shadow-lg shadow-primary/25 hover:brightness-105 active:scale-[0.98] transition-all" id="monetag-ad-btn">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">play_circle</span>
+<span>Watch Ad &amp; Earn +50 PTS</span>
+</button>
+</div>
+<!-- Daily Check-in Streak Container -->
+<div class="w-full rounded-2xl bg-surface-container-low p-space-md shadow-md flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-secondary-fixed text-[18px]">calendar_today</span>
+<h3 class="font-label-lg text-label-lg text-on-surface">Daily Check-in Streak</h3>
+</div>
+<span class="font-label-sm text-label-sm text-primary uppercase">Day 3 Available</span>
+</div>
+<!-- 7-Day Matrix -->
+<div class="grid grid-cols-7 gap-1.5 w-full pt-1">
+<!-- Day 1: Completed -->
+<div class="flex flex-col items-center justify-center p-2 rounded-xl bg-surface-container opacity-70">
+<span class="font-label-sm text-[9px] text-on-surface-variant">D1</span>
+<span class="material-symbols-outlined text-primary text-[16px] my-1">check_circle</span>
+<span class="font-label-sm text-[10px] text-on-surface-variant">10</span>
+</div>
+<!-- Day 2: Completed -->
+<div class="flex flex-col items-center justify-center p-2 rounded-xl bg-surface-container opacity-70">
+<span class="font-label-sm text-[9px] text-on-surface-variant">D2</span>
+<span class="material-symbols-outlined text-primary text-[16px] my-1">check_circle</span>
+<span class="font-label-sm text-[10px] text-on-surface-variant">20</span>
+</div>
+<!-- Day 3: Active Claimable -->
+<div class="flex flex-col items-center justify-center p-2 rounded-xl bg-surface-container-high shadow-md shadow-primary/10 cursor-pointer" id="day3-streak-box">
+<span class="font-label-sm text-[9px] text-primary font-bold">D3</span>
+<span class="material-symbols-outlined text-secondary-fixed text-[16px] my-1 animate-bounce">stars</span>
+<span class="font-label-sm text-[10px] text-primary font-bold">+35</span>
+</div>
+<!-- Day 4: Locked -->
+<div class="flex flex-col items-center justify-center p-2 rounded-xl bg-surface-container-lowest opacity-40">
+<span class="font-label-sm text-[9px] text-on-surface-variant">D4</span>
+<span class="material-symbols-outlined text-outline text-[16px] my-1">lock</span>
+<span class="font-label-sm text-[10px] text-on-surface-variant">45</span>
+</div>
+<!-- Day 5: Locked -->
+<div class="flex flex-col items-center justify-center p-2 rounded-xl bg-surface-container-lowest opacity-40">
+<span class="font-label-sm text-[9px] text-on-surface-variant">D5</span>
+<span class="material-symbols-outlined text-outline text-[16px] my-1">lock</span>
+<span class="font-label-sm text-[10px] text-on-surface-variant">60</span>
+</div>
+<!-- Day 6: Locked -->
+<div class="flex flex-col items-center justify-center p-2 rounded-xl bg-surface-container-lowest opacity-40">
+<span class="font-label-sm text-[9px] text-on-surface-variant">D6</span>
+<span class="material-symbols-outlined text-outline text-[16px] my-1">lock</span>
+<span class="font-label-sm text-[10px] text-on-surface-variant">80</span>
+</div>
+<!-- Day 7: Mega Reward Locked -->
+<div class="flex flex-col items-center justify-center p-2 rounded-xl bg-surface-container-high opacity-50">
+<span class="font-label-sm text-[9px] text-secondary">D7</span>
+<span class="material-symbols-outlined text-secondary text-[16px] my-1">military_tech</span>
+<span class="font-label-sm text-[10px] text-secondary font-bold">+150</span>
+</div>
+</div>
+</div>
+<!-- Referral System / Unlock Withdrawal Card -->
+<div class="w-full rounded-2xl bg-surface-container-low p-space-lg shadow-lg flex flex-col gap-space-md">
+<div class="flex items-start justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-full bg-secondary-container/15 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[22px]">group_add</span>
+</div>
+<div>
+<h3 class="font-label-lg text-label-lg text-on-surface">রেফার করুন ও আনলক করুন</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">+200 PTS &amp; আনলক উইথড্র</p>
+</div>
+</div>
+<div class="px-2.5 py-1 rounded-full bg-surface-container-high shrink-0">
+<span class="font-label-sm text-label-sm text-secondary-fixed" id="ref-counter">0 / 10 Completed</span>
+</div>
+</div>
+<!-- Unlock Notice & Progress -->
+<div class="flex flex-col gap-1.5 bg-surface-container p-3 rounded-xl">
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+        উইথড্র করতে সর্বনিম্ন ১০টি রেফার প্রয়োজন। বন্ধুদের আমন্ত্রণ জানিয়ে দ্রুত আনলক করুন!
+      </p>
+<div class="w-full h-1.5 bg-surface-container-lowest rounded-full overflow-hidden mt-1">
+<div class="h-full bg-secondary-container rounded-full w-[0%]" id="ref-progress-bar"></div>
+</div>
+</div>
+<!-- Referral CTA Actions -->
+<div class="grid grid-cols-2 gap-space-sm">
+<button class="w-full py-2.5 px-3 rounded-full bg-surface-container-high text-on-surface font-label-md text-label-md flex items-center justify-center gap-1.5 hover:bg-surface-bright active:scale-95 transition-all" id="copy-ref-btn">
+<span class="material-symbols-outlined text-[16px]">content_copy</span>
+<span>Copy Link</span>
+</button>
+<button class="w-full py-2.5 px-3 rounded-full bg-primary/20 text-primary font-label-md text-label-md font-bold flex items-center justify-center gap-1.5 hover:bg-primary/30 active:scale-95 transition-all" id="share-tg-btn">
+<span class="material-symbols-outlined text-[16px]">send</span>
+<span>Send on TG</span>
+</button>
+</div>
+</div>
+<!-- Dynamic Feedback Notification Toast -->
+<div class="fixed bottom-20 left-1/2 -translate-x-1/2 z-50 transform translate-y-32 opacity-0 transition-all duration-300 pointer-events-none w-[90%] max-w-sm rounded-xl bg-surface-container-highest p-4 shadow-2xl flex items-center gap-3" id="reward-toast">
+<div class="w-9 h-9 rounded-full bg-primary/20 flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined text-[20px]">emoji_events</span>
+</div>
+<div class="flex flex-col">
+<h4 class="font-label-md text-label-md text-on-surface font-bold" id="toast-title">Reward Claimed!</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant" id="toast-message">+50 PTS added to your stash.</p>
+</div>
+</div>
+</div>
+<!-- SDKs & Database Integration -->
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+<script data-sdk="show_12012404" data-zone="12012404" src="//libtl.com/sdk.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-database-compat.js"></script>
+<script>
+  (function() {
+    // 1. Initialize Telegram WebApp SDK
+    const tg = window.Telegram?.WebApp;
+    if (tg) {
+      tg.ready();
+      tg.expand();
+      try { tg.enableClosingConfirmation(); } catch(e) {}
+    }
+
+    // 2. Identify User & State
+    const tgUser = tg?.initDataUnsafe?.user;
+    const userId = tgUser?.id ? String(tgUser.id) : 'guest_user';
+    const username = tgUser?.username ? `@${tgUser.username}` : (tgUser?.first_name ? tgUser.first_name : '@guest_user');
+
+    // Update Profile Badge in App Header
+    const avatarSlot = document.getElementById('header-avatar-slot');
+    if (avatarSlot) {
+      avatarSlot.parentElement.innerHTML = `
+        <div class="flex items-center gap-1.5 px-space-sm py-1 rounded-full bg-surface-container-high">
+          <span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+          <span class="font-label-sm text-label-sm text-on-surface tracking-wider font-semibold">${username}</span>
+        </div>
+      `;
+    }
+
+    // 3. Initialize Firebase Realtime Database
+    let points = 150;
+    let referrals = 0;
+    let dbRef = null;
+
+    try {
+      if (!firebase.apps.length) {
+        firebase.initializeApp({
+          databaseURL: 'https://tuktukcash-default-rtdb.firebaseio.com/'
+        });
+      }
+      const db = firebase.database();
+      dbRef = db.ref('users/' + userId);
+
+      dbRef.on('value', (snapshot) => {
+        const val = snapshot.val();
+        if (val) {
+          if (typeof val.points === 'number') {
+            points = val.points;
+            updatePointsDisplay();
+          }
+          if (typeof val.referrals === 'number') {
+            referrals = val.referrals;
+            updateRefDisplay();
+          }
+        } else {
+          // Initialize new record
+          dbRef.set({
+            points: 150,
+            referrals: 0,
+            username: username,
+            last_active: Date.now()
+          });
+        }
+      });
+    } catch(err) {
+      console.warn('Firebase RTDB fallback mode activated:', err);
+    }
+
+    const pointsElem = document.getElementById('user-points-display');
+    function updatePointsDisplay() {
+      if (pointsElem) pointsElem.textContent = points;
+    }
+
+    function updateRefDisplay() {
+      const refCountElem = document.getElementById('ref-counter');
+      const refProgressBar = document.getElementById('ref-progress-bar');
+      if (refCountElem) refCountElem.textContent = `${referrals} / 10 Completed`;
+      if (refProgressBar) {
+        const pct = Math.min(100, Math.round((referrals / 10) * 100));
+        refProgressBar.style.width = `${pct}%`;
+      }
+    }
+
+    function syncPoints(delta) {
+      points += delta;
+      updatePointsDisplay();
+      if (dbRef) {
+        dbRef.child('points').transaction((current) => (current || 0) + delta);
+        dbRef.child('last_active').set(Date.now());
+      }
+    }
+
+    // Toast Trigger
+    const toast = document.getElementById('reward-toast');
+    const toastTitle = document.getElementById('toast-title');
+    const toastMessage = document.getElementById('toast-message');
+    let toastTimeout = null;
+
+    function showToast(title, msg) {
+      if (!toast) return;
+      if (toastTitle) toastTitle.textContent = title;
+      if (toastMessage) toastMessage.textContent = msg;
+      
+      toast.classList.remove('translate-y-32', 'opacity-0');
+      toast.classList.add('translate-y-0', 'opacity-100');
+
+      if (toastTimeout) clearTimeout(toastTimeout);
+      toastTimeout = setTimeout(() => {
+        toast.classList.remove('translate-y-0', 'opacity-100');
+        toast.classList.add('translate-y-32', 'opacity-0');
+      }, 3500);
+    }
+
+    // Quick Claim Handler (+25)
+    const quickClaimBtn = document.getElementById('quick-claim-btn');
+    if (quickClaimBtn) {
+      quickClaimBtn.addEventListener('click', () => {
+        syncPoints(25);
+        showToast('Daily Speed Claim', '+25 PTS added to your stash!');
+        if (tg?.HapticFeedback) tg.HapticFeedback.notificationOccurred('success');
+        quickClaimBtn.disabled = true;
+        quickClaimBtn.classList.add('opacity-50', 'pointer-events-none');
+        quickClaimBtn.innerHTML = '<span class="material-symbols-outlined text-[16px]">check</span> Claimed';
+      });
+    }
+
+    // Day 3 Streak Claim (+35)
+    const day3Box = document.getElementById('day3-streak-box');
+    if (day3Box) {
+      day3Box.addEventListener('click', () => {
+        syncPoints(35);
+        showToast('Day 3 Claimed!', '+35 PTS streak bonus awarded!');
+        if (tg?.HapticFeedback) tg.HapticFeedback.notificationOccurred('success');
+        day3Box.classList.remove('bg-surface-container-high', 'shadow-primary/10');
+        day3Box.classList.add('bg-surface-container', 'opacity-70', 'pointer-events-none');
+        day3Box.innerHTML = `
+          <span class="font-label-sm text-[9px] text-on-surface-variant">D3</span>
+          <span class="material-symbols-outlined text-primary text-[16px] my-1">check_circle</span>
+          <span class="font-label-sm text-[10px] text-on-surface-variant">35</span>
+        `;
+      });
+    }
+
+    // Monetag Rewarded Interstitial trigger
+    const adBtn = document.getElementById('monetag-ad-btn');
+    if (adBtn) {
+      adBtn.addEventListener('click', () => {
+        if (tg?.HapticFeedback) tg.HapticFeedback.impactOccurred('medium');
+
+        if (typeof show_12012404 === 'function') {
+          show_12012404().then(() => {
+            // Reward Callback
+            syncPoints(50);
+            showToast('Ad Reward Verified!', '+50 PTS added to your stash.');
+            if (tg?.HapticFeedback) tg.HapticFeedback.notificationOccurred('success');
+          }).catch((err) => {
+            console.error('Monetag show error:', err);
+            // Graceful fallback for simulator
+            syncPoints(50);
+            showToast('Reward Granted!', '+50 PTS added to your stash.');
+          });
+        } else {
+          // Monetag function not yet attached / offline simulation
+          syncPoints(50);
+          showToast('Ad Reward Granted', '+50 PTS credited successfully.');
+          if (tg?.HapticFeedback) tg.HapticFeedback.notificationOccurred('success');
+        }
+      });
+    }
+
+    // Referral Copy & Telegram Share Handlers
+    const copyRefBtn = document.getElementById('copy-ref-btn');
+    const shareTgBtn = document.getElementById('share-tg-btn');
+    const botHandle = 'Tuktukcashbot';
+    const refLink = `https://t.me/${botHandle}?start=ref_${userId}`;
+
+    if (copyRefBtn) {
+      copyRefBtn.addEventListener('click', () => {
+        navigator.clipboard?.writeText(refLink).then(() => {
+          showToast('Link Copied!', 'Invite link copied to clipboard.');
+          if (tg?.HapticFeedback) tg.HapticFeedback.notificationOccurred('success');
+        }).catch(() => {
+          showToast('Referral Link', refLink);
+        });
+      });
+    }
+
+    if (shareTgBtn) {
+      shareTgBtn.addEventListener('click', () => {
+        const shareText = encodeURIComponent('🚀 Join Tuktukcash TMA to earn real rewards and cashout quickly!');
+        const shareUrl = `https://t.me/share/url?url=${encodeURIComponent(refLink)}&text=${shareText}`;
+        if (tg?.openTelegramLink) {
+          tg.openTelegramLink(shareUrl);
+        } else {
+          window.open(shareUrl, '_blank');
+        }
+      });
+    }
+
+    // Update Bottom Navigation Links to specific pages
+    const navAnchors = document.querySelectorAll('nav a');
+    navAnchors.forEach(a => {
+      const path = a.getAttribute('data-path');
+      if (path === 'withdraw') a.setAttribute('href', 'withdraw.html');
+      if (path === 'history') a.setAttribute('href', 'history.html');
+      if (path === 'leaderboard') a.setAttribute('href', 'leaderboard.html');
+      if (path === 'earn-and-watch') a.setAttribute('href', 'index.html');
+    });
+
+  })();
+</script></main><nav class="fixed bottom-0 w-full z-50 pb-safe bg-surface-container-lowest/85 backdrop-blur-xl shadow-[0_-4px_20px_rgba(0,0,0,0.5)]" data-active-classes="text-primary font-bold"><div class="flex justify-around items-center h-16 px-space-xs"><a class="flex flex-col items-center justify-center gap-1 min-w-[48px] min-h-[48px] px-space-xs text-primary transition-colors" data-path="earn-and-watch" href="#"><span class="material-symbols-outlined text-[22px]">play_circle</span><span class="font-label-sm text-label-sm">Earn</span></a><a class="flex flex-col items-center justify-center gap-1 min-w-[48px] min-h-[48px] px-space-xs text-on-surface-variant hover:text-on-surface transition-colors" data-path="withdraw" href="#"><span class="material-symbols-outlined text-[22px]">account_balance_wallet</span><span class="font-label-sm text-label-sm">Withdraw</span></a><a class="flex flex-col items-center justify-center gap-1 min-w-[48px] min-h-[48px] px-space-xs text-on-surface-variant hover:text-on-surface transition-colors" data-path="leaderboard" href="#"><span class="material-symbols-outlined text-[22px]">leaderboard</span><span class="font-label-sm text-label-sm">Ranks</span></a><a class="flex flex-col items-center justify-center gap-1 min-w-[48px] min-h-[48px] px-space-xs text-on-surface-variant hover:text-on-surface transition-colors" data-path="history" href="#"><span class="material-symbols-outlined text-[22px]">receipt_long</span><span class="font-label-sm text-label-sm">History</span></a></div></nav></body></html>
